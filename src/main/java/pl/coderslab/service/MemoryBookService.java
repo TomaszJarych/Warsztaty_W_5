@@ -6,9 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import pl.coderslab.classes.Book;
+import pl.coderslab.classes.BookService;
 
 @Service
-public class MemoryBookService {
+public class MemoryBookService implements BookService{
 	private List<Book> list;
 
 	public MemoryBookService() {
