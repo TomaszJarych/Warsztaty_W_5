@@ -3,9 +3,11 @@ package pl.coderslab.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +45,21 @@ public class BookController {
 
 	@PostMapping("/bookList")
 	public void addBook(@RequestBody Book book) {
-		System.out.println(book.toString());
 		bookService.addBook(book);
+	}
+	@PutMapping("/bookList/{id}")
+	public void putBook(@PathVariable long id, @RequestBody Book book) {
+		Book bookToChange = bookService.bookById(id);
+		bookToChange.setId(book.getId());
+		bookToChange.setAuthor(book.getAuthor());
+		bookToChange.setTitle(book.getTitle());
+		bookToChange.setIsbn(book.getIsbn());		
+		bookToChange.setPublisher(book.getPublisher());		
+		bookToChange.setType(book.getType());		
+	}
+	
+	@DeleteMapping("/bookList/{id}")
+	public void deleteBook(@PathVariable long id, @RequestBody Book book) {
+		bookService.removeBook(bookService.bookById(id));
 	}
 }

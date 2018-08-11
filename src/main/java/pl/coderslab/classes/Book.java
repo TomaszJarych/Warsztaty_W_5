@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Book {
-	private final long id;
-	private final String isbn;
-	private final String title;
-	private final String author;
-	private final String publisher;
-	private final String type;
+	private  long id;
+	private  String isbn;
+	private  String title;
+	private  String author;
+	private  String publisher;
+	private  String type;
 	@JsonCreator
 	public Book(@JsonProperty("id")long id,@JsonProperty("isbn") String isbn, @JsonProperty("title")String title,
 			@JsonProperty("author")String author, @JsonProperty("publisher")String publisher, 
@@ -47,5 +47,30 @@ public class Book {
 	public String getType() {
 		return type;
 	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 
 }

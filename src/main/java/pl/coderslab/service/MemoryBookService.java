@@ -30,4 +30,11 @@ public class MemoryBookService {
 	public void addBook(Book book) {
 		list.add(book);
 	}
+	
+	public Book bookById(long id) {
+		return list.stream().filter(book -> book.getId() == id).findFirst().orElse(null);
+	}
+	public void removeBook(Book book) {
+		list.remove(book);
+	}
 }
