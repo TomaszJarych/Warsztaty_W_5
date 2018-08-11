@@ -38,26 +38,30 @@ public class BookController {
 
 	@GetMapping("/bookList/{id}")
 	public Book bookById(@PathVariable("id") long id) {
-		return bookService.getList().stream().filter(book -> book.getId() == id)
-				.findFirst()
-				.orElse(null);
+		return bookService.getList().stream().filter(book -> book.getId() == id).findFirst().orElse(null);
 	}
 
 	@PostMapping("/bookList")
 	public void addBook(@RequestBody Book book) {
 		bookService.addBook(book);
 	}
+
 	@PutMapping("/bookList/{id}")
 	public void putBook(@PathVariable long id, @RequestBody Book book) {
-		Book bookToChange = bookService.bookById(id);
+		// na niemutowalnych obiektach podmienia się na nowy obiekt, bez wykorzystania
+		// setterów i z polami klasy final
+		 Book bookToChange = bookService.bookById(id);
+		// bookService.removeBook(bookToChange);
+		// bookService.addBook(book); wersja z niemutowalnymi obiektami
+
 		bookToChange.setId(book.getId());
 		bookToChange.setAuthor(book.getAuthor());
 		bookToChange.setTitle(book.getTitle());
-		bookToChange.setIsbn(book.getIsbn());		
-		bookToChange.setPublisher(book.getPublisher());		
-		bookToChange.setType(book.getType());		
+		bookToChange.setIsbn(book.getIsbn());
+		bookToChange.setPublisher(book.getPublisher());
+		bookToChange.setType(book.getType());
 	}
-	
+
 	@DeleteMapping("/bookList/{id}")
 	public void deleteBook(@PathVariable long id, @RequestBody Book book) {
 		bookService.removeBook(bookService.bookById(id));
