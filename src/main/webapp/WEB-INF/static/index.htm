@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="resources/style/style.css">
+
+    <title>BooksList</title>
+</head>
+
+<body>
+    <h1>Lista książek</h1>
+    <div id="booksList"></div>
+
+    <br>
+    <div>
+        <form id="bookAdd" action="http://localhost:8080/Warsztaty_W_5/books" method="POST">
+        <label>ID:
+                <input type="number" id="inputId">
+            </label>
+            <label>Autor:
+                <input type="text" id="inputAuthor">
+            </label>
+            <label>Tytuł:
+                <input type="text" id="inputTitle">
+            </label>
+            <label>ISBN:
+                <input type="text" id="inputIsbn">
+            </label>
+            <label>Wydawca:
+                <input type="text" id="inputPublisher">
+            </label>
+            <label> Typ:
+                <input type="text" id="inputType">
+            </label>
+            <input type="submit" id="addBookButton" value="Submit">
+        </form>
+    
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="resources/js/app.js"></script>
+</body>
+
+</html>
